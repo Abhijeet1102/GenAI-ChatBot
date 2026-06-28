@@ -42,5 +42,9 @@ def text_split(extracted_data):
 
 #Download the Embeddings from HuggingFace 
 def download_hugging_face_embeddings():
-    embeddings=HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')  #this model return 384 dimensions
+    from langchain_huggingface import HuggingFaceEndpointEmbeddings
+    embeddings = HuggingFaceEndpointEmbeddings(
+        model="sentence-transformers/all-MiniLM-L6-v2",
+        task="feature-extraction",
+    )
     return embeddings
